@@ -1,0 +1,19 @@
+---
+pagination:
+    data: wp.tags
+    size: 1
+    alias: tag
+permalink: "tag/{{ tag.slug }}/"
+custom_styles: []
+---
+
+<h1>{{ tag.count }} articles for {{ tag.name }}</h1>
+    <ul>
+    {% for article in wp.posts %}
+        {% if tag.id in article.tags %}
+        <li>
+            <h2><a href="/{{ article.slug }}">{{ article.title.rendered | safe }}</a></h2>
+        </li>
+        {% endif %}
+    {% endfor %}
+    </ul>

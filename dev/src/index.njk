@@ -1,0 +1,14 @@
+<h2>Pages:</h2>
+{% for page in wp.pages %}
+    {{ page.title.rendered }} | {{page.link}} <br>
+{% endfor %}
+
+<h2>Tags:</h2>
+{% for tag in wp.tags %}
+    {{ tag.name }} | <a href="/tag/{{tag.slug}}/">{{tag.slug}}</a><br>
+{% endfor %}
+
+<h2>Posts:</h2>
+{% for page in wp.posts %}
+    {{ page.title.rendered }} | <a href="{{page.slug}}">{{page.slug}}</a><br>
+{% endfor %}

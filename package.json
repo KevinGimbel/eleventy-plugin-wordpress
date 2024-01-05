@@ -1,0 +1,24 @@
+{
+  "name": "@kevingimbel/eleventy-plugin-wordpress",
+  "version": "0.1.0",
+  "description": "Experimental WordPress-to-11ty Plugin. Currently loads Pages, Posts, and Tags",
+  "main": ".eleventy.js",
+  "scripts": {
+    "dev": "cd dev && npx @11ty/eleventy --serve --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinGimbel/eleventy-plugin-wordpress.git"
+  },
+  "keywords": [
+    "11ty",
+    "11ty-plugin",
+    "eleventy",
+    "eleventy-plugin"
+  ],
+  "author": {
+    "name": "KevinGimbel",
+    "url": "https://kevin.gimbel.dev"
+  },
+  "license": "MIT"
+}
