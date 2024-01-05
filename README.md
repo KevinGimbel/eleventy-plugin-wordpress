@@ -38,13 +38,13 @@ The plugin is also quite slow, it takes between 4-5 seconds to load data from a 
 Install the plugin via npm, then configure it.
 
 ```sh
-npm install --save @kevingimbel/eleventy-plugin-wordpress
+npm install --save kg-eleventy-plugin-wordpress
 ```
 
 ### Configuration
 
 ```js
-const  EleventyWP = require('@kevingimbel/eleventy-plugin-wordpress');
+const  EleventyWP = require('kg-eleventy-plugin-wordpress');
 
 module.exports = (eleventyConfig, options) => {
     

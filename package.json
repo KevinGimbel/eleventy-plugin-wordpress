@@ -1,5 +1,5 @@
 {
-  "name": "@kevingimbel/eleventy-plugin-wordpress",
+  "name": "kg-eleventy-plugin-wordpress",
   "version": "0.1.0",
   "description": "Experimental WordPress-to-11ty Plugin. Currently loads Pages, Posts, and Tags",
   "main": ".eleventy.js",
