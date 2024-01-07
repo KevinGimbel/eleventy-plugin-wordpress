@@ -59,7 +59,7 @@ class WordPressAPI {
         for (let idx in return_data[0]) {
             let entry = return_data[0][idx];
             if (entry.link) {
-                entry.link = entry.link.replace(this.base_url, '');
+                entry.link = entry.link.replace(`${this.base_url}/`, '');
             }
             cleaned_return_data.push(entry);
         }
