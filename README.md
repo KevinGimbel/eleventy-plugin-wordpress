@@ -7,7 +7,7 @@
   - [Goals](#goals)
   - [Non-goals](#non-goals)
 - [Usage](#usage)
-  - [Installatiomn](#installatiomn)
+  - [Installation](#installation)
   - [Configuration](#configuration)
   - [Template usage](#template-usage)
 <!-- END mktoc -->
@@ -34,7 +34,7 @@ The plugin is also quite slow, it takes between 4-5 seconds to load data from a 
 
 ## Usage
 
-### Installatiomn
+### Installation
 Install the plugin via npm, then configure it.
 
 ```sh
