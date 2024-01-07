@@ -3,7 +3,7 @@ const http = require('node:https');
 class WordPressAPI {
     constructor(options) {
         this.base_url = options.base_url;
-        
+
         return this;
     }
 
@@ -43,6 +43,8 @@ class WordPressAPI {
         let got_data = true;
         let page = 1;
         let return_data = [];
+        let cleaned_return_data = []
+
         while(got_data) {
             got_data = await this.call_api(type,`${params}&page=${page}`);
             if (this.responseHasData(got_data)) {
@@ -53,7 +55,16 @@ class WordPressAPI {
             }
         }
         
-        return return_data[0];
+        // Clean-up links
+        for (let idx in return_data[0]) {
+            let entry = return_data[0][idx];
+            if (entry.link) {
+                entry.link = entry.link.replace(this.base_url, '');
+            }
+            cleaned_return_data.push(entry);
+        }
+
+        return cleaned_return_data;
     }
 
     async getPages() {
