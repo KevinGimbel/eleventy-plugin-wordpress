@@ -87,7 +87,7 @@ module.exports = (eleventyConfig, pluginOptions) => {
     let wp_api = new WordPressAPI(pluginOptions);
     let options = pluginOptions;
 
-    eleventyConfig.addGlobalData("wp", async function() {
+    eleventyConfig.addGlobalData(pluginOptions.data_name || "wp", async function() {
         // WP data fetching must be disabled explicitly
         const pages = options.include?.pages == false ? [] : await wp_api.getPages();
         const posts = options.include?.posts == false ? [] : await wp_api.getPosts();
