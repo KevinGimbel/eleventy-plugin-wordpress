@@ -1,6 +1,6 @@
 {
   "name": "kg-eleventy-plugin-wordpress",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Experimental WordPress-to-11ty Plugin. Currently loads Pages, Posts, and Tags",
   "main": ".eleventy.js",
   "scripts": {
