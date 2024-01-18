@@ -23,7 +23,7 @@ class WordPressAPI {
             // The WP API returns an empty array for tags if there are no more,
             // there's probably a better way to handle this.
             // Pages and Posts will return a JSON object which is handled in the calling function
-            if (JSON.stringify(data) == "[]") {
+            if (JSON.stringify(data) == "[]" || data == false) {
                 return false;
             }
         }
@@ -54,14 +54,17 @@ class WordPressAPI {
                 got_data = false; // break loop
             }
         }
-        
-        // Clean-up links
-        for (let idx in return_data[0]) {
-            let entry = return_data[0][idx];
-            if (entry.link) {
-                entry.link = entry.link.replace(`${this.base_url}/`, '');
+
+
+        for (let id in return_data) {
+            let dataset = return_data[id];
+            for (let id_2 in dataset) {
+                let entry = dataset[id_2];
+                if (entry.link) {
+                    entry.link = entry.link.replace(`${this.base_url}/`, '');
+                }
+                cleaned_return_data.push(entry);
             }
-            cleaned_return_data.push(entry);
         }
 
         return cleaned_return_data;
@@ -81,6 +84,11 @@ class WordPressAPI {
         this.log("Getting Posts");
         return await this.query_loop("posts", "orderby=date&order=desc&per_page=100");
     }
+
+    async getMedia() {
+        this.log("Getting Media files");
+        return await this.query_loop("media", "per_page=100");
+    }
 }
 
 module.exports = (eleventyConfig, pluginOptions) => {
@@ -92,8 +100,9 @@ module.exports = (eleventyConfig, pluginOptions) => {
         const pages = options.include?.pages == false ? [] : await wp_api.getPages();
         const posts = options.include?.posts == false ? [] : await wp_api.getPosts();
         const tags = options.include?.tags == false ? [] : await wp_api.getTags();
+        const media = options.include?.media == false ? [] : await wp_api.getMedia();
 
-        return {pages, posts, tags}
+        return {pages, posts, tags, media}
     });
 
     return eleventyConfig
